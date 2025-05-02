@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">MovieFlix</div>
+            <div class="nav-links">
+                <a href="#" id="home-link">Home</a>
+                <a href="#" id="profile-link">Profile</a>
+                <a href="#" id="logout-link">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Page -->
+    <section id="login-page" class="container">
+        <div class="login-container">
+            <h2>Login to MovieFlix</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-username">Username</label>
+                    <input type="text" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="button" class="btn btn-secondary" id="reset-password">Forgot Password?</button>
+                </div>
+            </form>
+            <div class="signup-link">
+                <p>Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Page -->
+    <section id="signup-page" class="container">
+        <div class="signup-container">
+            <h2>Create an Account</h2>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input type="password" id="signup-confirm" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <button type="button" class="btn btn-secondary" id="back-to-login">Back to Login</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Location Page -->
+    <section id="location-page" class="container">
+        <div class="location-container">
+            <h2>Select Your Location</h2>
+            <div class="location-grid" id="location-grid">
+                <!-- Locations will be added dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Page -->
+    <section id="main-page" class="container">
+        <div class="main-header">
+            <h2>Now Showing in <span id="current-location">Hyderabad</span></h2>
+            <div>
+                <button class="btn btn-secondary" id="change-location">Change Location</button>
+            </div>
+        </div>
+        <div class="movies-grid" id="movies-grid">
+            <!-- Movies will be added dynamically -->
+        </div>
+    </section>
+
+    <!-- Theatre Page -->
+    <section id="theatre-page" class="container">
+        <div class="theatre-container">
+            <div class="theatre-header">
+                <img src="" alt="Movie Poster" class="theatre-poster" id="theatre-poster">
+                <div class="theatre-info">
+                    <h2 id="selected-movie-title">Movie Title</h2>
+                    <p id="selected-movie-genre">Action, Adventure</p>
+                    <p id="selected-movie-duration">2h 15m</p>
+                </div>
+            </div>
+            <div class="showtimes-container">
+                <h3>Select Theatre and Showtime</h3>
+                <div class="theatre-list" id="theatre-list">
+                    <!-- Theatres will be added dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seats Page -->
+    <section id="seats-page" class="container">
+        <div class="seats-container">
+            <div class="seats-header">
+                <h2 id="seats-movie-title">Movie Title</h2>
+                <p id="seats-theatre-name">Theatre Name</p>
+                <p id="seats-showtime">Showtime: 10:00 AM</p>
+                <p id="seats-screen">Screen: 1</p>
+            </div>
+            <div class="screen">
+                SCREEN THIS WAY
+            </div>
+            <div class="seat-legend">
+                <div class="legend-item">
+                    <div class="legend-color available-color"></div>
+                    <span>Available</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color selected-color"></div>
+                    <span>Selected</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color occupied-color"></div>
+                    <span>Occupied</span>
+                </div>
+            </div>
+            <div class="seats-grid" id="seats-grid">
+                <!-- Seats will be added dynamically -->
+            </div>
+            <div class="booking-summary">
+                <h3>Booking Summary</h3>
+                <div class="summary-item">
+                    <span>Seats:</span>
+                    <span id="selected-seats">None</span>
+                </div>
+                <div class="summary-item">
+                    <span>Price per seat:</span>
+                    <span>₹180</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Total:</span>
+                    <span id="total-price">₹0</span>
+                </div>
+                <button class="btn btn-primary" id="proceed-to-payment" style="width: 100%; margin-top: 20px;">Proceed to Payment</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Page -->
+    <section id="payment-page" class="container">
+        <div class="payment-container">
+            <div class="payment-header">
+                <h2>Payment</h2>
+            </div>
+            <div class="payment-summary">
+                <div class="summary-item">
+                    <span>Movie:</span>
+                    <span id="payment-movie">Movie Title</span>
+                </div>
+                <div class="summary-item">
+                    <span>Theatre:</span>
+                    <span id="payment-theatre">Theatre Name</span>
+                </div>
+                <div class="summary-item">
+                    <span>Showtime:</span>
+                    <span id="payment-showtime">10:00 AM</span>
+                </div>
+                <div class="summary-item">
+                    <span>Seats:</span>
+                    <span id="payment-seats">A1, A2</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Total:</span>
+                    <span id="payment-total">₹360</span>
+                </div>
+            </div>
+            <div class="payment-methods">
+                <div class="payment-method" data-method="credit">
+                    <i class="fas fa-credit-card"></i>
+                    <p>Credit Card</p>
+                </div>
+                <div class="payment-method" data-method="debit">
+                    <i class="fas fa-credit-card"></i>
+                    <p>Debit Card</p>
+                </div>
+                <div class="payment-method" data-method="upi">
+                    <i class="fas fa-mobile-alt"></i>
+                    <p>UPI</p>
+                </div>
+                <div class="payment-method" data-method="netbanking">
+                    <i class="fas fa-university"></i>
+                    <p>Net Banking</p>
+                </div>
+            </div>
+            <div class="payment-form">
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                </div>
+                <div class="form-row">
+                    <div class="form-group-half">
+                        <label for="expiry-date">Expiry Date</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group-half">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" placeholder="123">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="card-name">Name on Card</label>
+                    <input type="text" id="card-name" placeholder="John Doe">
+                </div>
+                <button class="btn btn-primary" id="make-payment" style="width: 100%;">Make Payment</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ticket Page -->
+    <section id="ticket-page" class="container">
+        <div class="ticket-container">
+            <div class="ticket-header">
+                <h2>Your Ticket</h2>
+                <p>Thank you for booking with MovieFlix!</p>
+            </div>
+            <div class="ticket-content">
+                <img src="" alt="Movie Poster" class="ticket-poster" id="ticket-poster">
+                <div class="ticket-details">
+                    <h3 id="ticket-movie-title">Movie Title</h3>
+                    <div class="ticket-info">
+                        <span>Theatre:</span> <span id="ticket-theatre">Theatre Name</span>
+                    </div>
+                    <div class="ticket-info">
+                        <span>Location:</span> <span id="ticket-location">Hyderabad</span>
+                    </div>
+                    <div class="ticket-info">
+                        <span>Date:</span> <span id="ticket-date">15 Oct 2023</span>
+                    </div>
+                    <div class="ticket-info">
+                        <span>Time:</span> <span id="ticket-time">10:00 AM</span>
+                    </div>
+                    <div class="ticket-info">
+                        <span>Screen:</span> <span id="ticket-screen">Screen 1</span>
+                    </div>
+                    <div class="ticket-seats">
+                        <span>Seats:</span> <span id="ticket-seats">A1, A2</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ticket-qr">
+                <div class="qr-code">
+                    <i class="fas fa-qrcode" style="font-size: 50px; color: #333;"></i>
+                </div>
+                <p>Show this QR code at the theatre entrance</p>
+            </div>
+            <button class="btn btn-primary" id="back-to-movies" style="width: 100%;">Back to Movies</button>
+        </div>
+    </section>
+
+    <!-- Booking History Page -->
+    <section id="history-page" class="container">
+        <div class="history-container">
+            <div class="history-header">
+                <h2>Your Booking History</h2>
+            </div>
+            <div class="history-list" id="history-list">
+                <!-- History items will be added dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Page -->
+    <section id="profile-page" class="container">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profile-avatar">U</div>
+                <div class="profile-info">
+                    <h2 id="profile-name">User Name</h2>
+                    <p id="profile-email">user@example.com</p>
+                </div>
+            </div>
+            <div class="profile-details">
+                <div class="detail-item">
+                    <label for="profile-username">Username</label>
+                    <input type="text" id="profile-username" disabled>
+                </div>
+                <div class="detail-item">
+                    <label for="profile-phone">Phone Number</label>
+                    <input type="text" id="profile-phone">
+                </div>
+                <div class="detail-item">
+                    <label for="profile-dob">Date of Birth</label>
+                    <input type="date" id="profile-dob">
+                </div>
+                <div class="detail-item">
+                    <label for="profile-address">Address</label>
+                    <input type="text" id="profile-address">
+                </div>
+            </div>
+            <div class="profile-actions">
+                <button class="btn btn-primary" id="update-profile">Update Profile</button>
+                <button class="btn btn-secondary" id="delete-account">Delete Account</button>
+            </div>
+            <div style="margin-top: 30px;">
+                <h3>Contact Us</h3>
+                <p>For any queries or support, please email us at Vayanandanabud@movieflix.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active" id="nav-home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item" id="nav-bookings">
+            <i class="fas fa-ticket-alt"></i>
+            <span>Bookings</span>
+        </a>
+        <a href="#" class="nav-item" id="nav-history">
+            <i class="fas fa-history"></i>
+            <span>History</span>
+        </a>
+        <a href="#" class="nav-item" id="nav-profile">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </div>
+</body>
+</html>
+<script src="script.js"></script>
